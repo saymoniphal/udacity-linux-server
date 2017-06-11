@@ -10,10 +10,13 @@ i. The IP address and SSH port
 	Private IP: 172.31.22.2
 	SSH port: 2200
 
+A user/pwd 'grader/grader' created on this server.
+
 To connect to the server using ssh, use its public dns name and provide 2200 as port number:
 
 ex:
-    ssh -i udacity1.pem ubuntu@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
+
+    ssh -i grader.pem grader@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
 
 ii. The complete URL to web application 'item catalog' hosted on this server.
 
@@ -90,6 +93,7 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 	    postgres=# initdb -D /usr/local/pgsql/data
 	
 	start the database server in background:
+
 	    postgres -D /usr/local/pgsql/data >logfile 2>&1 &
 
 10. Configured and hosted item-catalog web application
