@@ -13,8 +13,7 @@ i. The IP address and SSH port
 To connect to the server using ssh, use its public dns name and provide 2200 as port number:
 
 ex:
-
-	ssh -i udacity1.pem ubuntu@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
+    ssh -i udacity1.pem ubuntu@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
 
 ii. The complete URL to web application 'item catalog' hosted on this server.
 
@@ -33,14 +32,14 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 1. Update packages
 
-	`sudo apt-get update`
+	    sudo apt-get update
 
 2. Configure SSH port to 2200
 
 	* Edit file `/etc/ssh/sshd_config` and changed `Port 22` to `Port 2200`
 
 	* Restart sshd service:
-	`sudo systemctl restart sshd`
+	    sudo systemctl restart sshd
 	
 3. Configure Uncomplicated Firewall (UFW) to allow SSH(2200), HTTP(80) and NTP(123)
 
@@ -57,7 +56,7 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 5. Give grader the permission of sudo
 
-	`sudo adduser grader sudo`
+        sudo adduser grader sudo
 
 6. Create an SSH key pair for grader using RSA
 
@@ -69,29 +68,29 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 8. Install and configure Apache to serve a Python mod_wsgi application.
 
-	`sudo apt-get install apache2 libapache2-mod-wsgi`
+	    sudo apt-get install apache2 libapache2-mod-wsgi
 
 9. Install and configure PostgreSQL:
 
-    sudo apt-get install postgresql
+        sudo apt-get install postgresql
 	
 	* Do not allow remote connections (default setting)
 
 	Checked the file:
-	/etc/postgresql/9.5/main/pg_hba.conf and only local connection is allowed.
+	`/etc/postgresql/9.5/main/pg_hba.conf` and only local connection is allowed.
 
     * Create a new database user named catalog that has limited permissions to your catalog application database.
 	
-	`sudo su - postgres
-	psql
-	CREATE USER catalog WITH CREATEDB;`
+	    sudo su - postgres
+	    psql
+	    CREATE USER catalog WITH CREATEDB;
 
 	* configure and start database server
 	
-	`postgres=# initdb -D /usr/local/pgsql/data`
+	    postgres=# initdb -D /usr/local/pgsql/data
 	
 	start the database server in background:
-	`postgres -D /usr/local/pgsql/data >logfile 2>&1 &`
+	    postgres -D /usr/local/pgsql/data >logfile 2>&1 &
 
 10. Configured and hosted item-catalog web application
 	
