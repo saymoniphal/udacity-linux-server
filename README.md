@@ -13,7 +13,6 @@ i. The IP address and SSH port
 To connect to the server using ssh, use its public dns name and provide 2200 as port number:
 
 ex:
----
 
 	ssh -i udacity1.pem ubuntu@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
 
@@ -47,10 +46,10 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 	Ran below commands as sudo:
 	
-	`sudo ufw allow from any to any port 80 proto tcp
-	sudo ufw allow from any to any port 2200 proto tcp
-	sudo ufw allow from any to any port 123 proto udp
-	sudo ufw enable`
+        sudo ufw allow from any to any port 80 proto tcp
+	    sudo ufw allow from any to any port 2200 proto tcp
+	    sudo ufw allow from any to any port 123 proto udp
+	    sudo ufw enable
 
 4. Create 'grader' account
 
@@ -74,7 +73,7 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 9. Install and configure PostgreSQL:
 
-   sudo apt-get install postgresql
+    sudo apt-get install postgresql
 	
 	* Do not allow remote connections (default setting)
 
