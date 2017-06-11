@@ -11,17 +11,15 @@ i. The IP address and SSH port
 	SSH port: 2200
 
 To connect to the server using ssh, use its public dns name and provide 2200 as port number:
+
 ex:
 ---
 
 	ssh -i udacity1.pem ubuntu@ec2-34-211-165-57.us-west-2.compute.amazonaws.com -p 2200
 
-ii. The complete URL to hosted web application.
+ii. The complete URL to web application 'item catalog' hosted on this server.
 
-	http://ec2-34-211-165-57.us-west-2.compute.amazonaws.com/itemcatalog
-
-Locate the SSH key you created for the grader user.
-During the submission process, paste the contents of the grader user's SSH key into the "Notes to Reviewer" field.
+	http://catalog.moniph.al
 
 # A summary of software installed and configuration changes made.
 -----------------------------------------------------------------
@@ -40,19 +38,19 @@ During the submission process, paste the contents of the grader user's SSH key i
 
 2. Configure SSH port to 2200
 
-	* Edit file ''/etc/ssh/sshd_config'' and changed ''Port 22'' to ''Port 2200''
+	* Edit file `/etc/ssh/sshd_config` and changed `Port 22` to `Port 2200`
 
 	* Restart sshd service:
-	  >sudo systemctl restart sshd
+	`sudo systemctl restart sshd`
 	
 3. Configure Uncomplicated Firewall (UFW) to allow SSH(2200), HTTP(80) and NTP(123)
 
 	Ran below commands as sudo:
 	
-	>sudo ufw allow from any to any port 80 proto tcp
-	>sudo ufw allow from any to any port 2200 proto tcp
-	>sudo ufw allow from any to any port 123 proto udp
-	>sudo ufw enable
+	`sudo ufw allow from any to any port 80 proto tcp
+	sudo ufw allow from any to any port 2200 proto tcp
+	sudo ufw allow from any to any port 123 proto udp
+	sudo ufw enable`
 
 4. Create 'grader' account
 
@@ -60,7 +58,7 @@ During the submission process, paste the contents of the grader user's SSH key i
 
 5. Give grader the permission of sudo
 
-	sudo adduser grader sudo
+	`sudo adduser grader sudo`
 
 6. Create an SSH key pair for grader using RSA
 
@@ -74,7 +72,6 @@ During the submission process, paste the contents of the grader user's SSH key i
 
 	`sudo apt-get install apache2 libapache2-mod-wsgi`
 
-
 9. Install and configure PostgreSQL:
 
    sudo apt-get install postgresql
@@ -86,16 +83,18 @@ During the submission process, paste the contents of the grader user's SSH key i
 
     * Create a new database user named catalog that has limited permissions to your catalog application database.
 	
-	sudo su - postgres
+	`sudo su - postgres
 	psql
-	CREATE USER catalog WITH CREATEDB;
+	CREATE USER catalog WITH CREATEDB;`
 
 	* configure and start database server
 	
-	postgres=# initdb -D /usr/local/pgsql/data
+	`postgres=# initdb -D /usr/local/pgsql/data`
 	
 	start the database server in background:
-	postgres -D /usr/local/pgsql/data >logfile 2>&1 &
+	`postgres -D /usr/local/pgsql/data >logfile 2>&1 &`
+
+10. Configured and hosted item-catalog web application
 	
 ## A list of any third-party resources made use of to complete this project.
 
