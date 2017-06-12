@@ -33,9 +33,12 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
 
 ## Configuration made to the server
 
-1. Update packages
+1. Automatic security upgrades (thanks alex)
 
-	    sudo apt-get update
+Installed `unattended-upgrades` and enable it:
+
+		sudo apt-get install unattended-upgrades
+		sudo dpkg-reconfigure --priority=low unattended-upgrades
 
 2. Configure SSH port to 2200
 
@@ -51,6 +54,7 @@ ii. The complete URL to web application 'item catalog' hosted on this server.
         sudo ufw allow from any to any port 80 proto tcp
 	    sudo ufw allow from any to any port 2200 proto tcp
 	    sudo ufw allow from any to any port 123 proto udp
+		sudo ufw deny 22/tcp
 	    sudo ufw enable
 
 4. Create 'grader' account
